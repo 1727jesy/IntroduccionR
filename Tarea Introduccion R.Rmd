@@ -22,22 +22,61 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## TAREA 1: TIPOS DE DATOS
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+En este archivo se solucióna la TAREA 1: TIPOS DE DATOS
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+### Ejericicio 1
+Crear un identificador de nombre "ciudad" y asigne como valor el nombre de alguna ciudad.
 
-```{r cars}
-summary(cars)
+```{r ciudad}
+#Asiganar identificar de una ciudad
+ciudad<-"Cuenca"
+ciudad
+
 ```
 
-## Including Plots
+### Ejercicio 2
+Crear un identificador de nombre "pais_andes" y asigne como valor los nombres de los países por donde cruza la cordillera de Los Andes.
 
-You can also embed plots, for example:
+```{r pais_andes}
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+pais_andes<-as.character(c("Argentina", "Bolivia", "Chile", "Colombia", "Ecuador", "Perú", "Venezuela"))
+
+str(pais_andes)
+    
+print(pais_andes)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+### Ejercicio 3
+Crear un dataframe con 12 eventos (files) y 5 variables (columnas), cada columna debe tener diferentes tipos de datos (entero, decimal, caracter, logico)
+
+```{r calificaciones}
+plantillaEcuador<-data.frame(
+  "Jugadores" = as.character(c("Hernán Galíndez", "Félix Torres", "Piero Hincapié", "Robert Arboleda", "Diego Palacios", "Romario Caicedo", "Pervis Estupiñán", "Carlos Gruezo", "Jordy Caicedo", "Joao Rojas", "Michael Estrada", "Pedro Ortíz")),
+  "Posición" = as.character(c("Portero", "Defensa", "Defensa", "Defensa", "Centrocampista", "Centrocampista", "Defensa", "Centrocampista", "Delantero", "Centrocampista", "Delantero", "Portero")),
+  "Altura_en_m" = c(1.88, 1.87, 1.83, 1.87, 1.69, 1.84, 1.75, 1.73, 1.85, 1.75, 1.85, 1.87),
+  "Peso_en_kg" = c(90, 78, 66, 85, 68, 74, 73, 71, 82, 70, 86, 80),
+  "Titular_vs_Perú" = c(TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, TRUE, TRUE, FALSE, FALSE, TRUE, FALSE))
+  
+plantillaEcuador
+```
+
+### Ejercicio 4
+Cargue el dataset "DNase" e identifique su estructura. Extraiga (subset) los datos que cumplan con las condiciones de: 
+  1. "conc" (concentracion) entre 0.1 y 0.2
+  2. "Run" diferente a 2, "conc" mayor a 0.2 y "density" menor o igual a 1.0
+```{r data}
+
+# Selección del dataset "DNase"
+?DNase
+
+# 1. "conc" (concentracion) entre 0.1 y 0.2
+conc <- subset(DNase, conc >= 0.1 & conc <=0.2)
+conc
+
+#2. "Run" diferente a 2, "conc" mayor a 0.2 y "density" menor o igual a 1.0
+todos <- subset(DNase, Run != 2 &  conc > 0.2 & density <= 1.0)
+todos
+
+```
